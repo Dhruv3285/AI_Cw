@@ -11,5 +11,5 @@
 # save changes
 # select file right click -> commit 
 # stage a commit from the commit menu 
-# writ msg that dercribes your changes 
+# writ msg that describes  your changes 
 # commit and push 
