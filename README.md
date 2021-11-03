@@ -4,7 +4,7 @@
 # 2. right click, select git bash 
 # 3. enter "git clone <repo link>", get link from the github online repo 
 # 4. open spyder -> Projects menu -> open project  -> select the folder that u just cloned
-# 5. I'll make branched and you can check work on those, dont push directly to main/source origin, just puch your individual branch 
+# 5. I'll make branched and you can check work on those, dont push directly to main/source origin,  push to your individual branch 
 
 
 # to commit and push: 
