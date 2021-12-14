@@ -48,13 +48,14 @@ math.sqrt(len(y_test))
 # gives 10 but we need odd k so 9 shall be used 
 
 
+print("<---------------------euclidean metric--------------------------------->")
+
 # implementation of KNN
 classifier = KNeighborsClassifier(n_neighbors= 9, p=2, metric = 'euclidean')
 classifier.fit(X_train, y_train)
 KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='euclidean',
                      metric_params=None, n_jobs=1, n_neighbors=9, p=2,
                      weights='uniform')
-
 
 # predict the test set results 
 y_pred = classifier.predict(X_test)
@@ -64,12 +65,26 @@ y_pred = classifier.predict(X_test)
 cm = confusion_matrix(y_test, y_pred)
 print (cm)
 print(f1_score(y_test, y_pred))
-
-
 print(accuracy_score(y_test, y_pred))
 
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=classifier.classes_)
 disp.plot()
+
+print("<-----------------------manhattan metric------------------------------->")
+
+classifier2 = KNeighborsClassifier(n_neighbors= 9, p=2, metric = 'manhattan')
+classifier2.fit(X_train, y_train)
+KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='manhattan',
+                     metric_params=None, n_jobs=1, n_neighbors=9, p=2,
+                     weights='uniform')
+
+y_pred2 = classifier2.predict(X_test)
+
+# Evaluate model using matrix 
+cm2 = confusion_matrix(y_test, y_pred2)
+print (cm2)
+print(f1_score(y_test, y_pred2))
+print(accuracy_score(y_test, y_pred2))
 
 
 
