@@ -24,7 +24,7 @@ path = "."  #absolute or relative path to the folder containing the file.
 
 filename_read = os.path.join(path, "Stroke data set1.csv")
 df = pd.read_csv(filename_read)
-
+print(df)
 
 X = df[['age','hypertension','heart_disease','avg_glucose_level','bmi']]
 y = df[['stroke']]
