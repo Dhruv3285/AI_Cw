@@ -172,7 +172,6 @@ for train_index, validate_index in kf.split(X1, y1):
 
 
 
-
 #print(y_test)
 #print(y_pred)
 

@@ -142,8 +142,20 @@ multi_svm.fit(X_train,y_train)
 
 y_pred = multi_svm.predict(X_test)
 
-
 variety = target_names
+
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=variety)
+disp.plot()
+plt.show()
+
+
+
+
+
+
+
+
+
 
 cm = confusion_matrix(y_test, y_pred)
 np.set_printoptions(precision=2)
@@ -157,15 +169,12 @@ plot_confusion_matrix(cm_normalized, variety, title='Normalized confusion matrix
 plt.show()
 
 
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=variety)
-disp.plot()
-plt.show()
 
 #print(variety)
 
 
 
-
+print(X_test)
 
 
 
