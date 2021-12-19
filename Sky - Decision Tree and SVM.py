@@ -60,53 +60,69 @@ decisionT.plot()
 plt.show()   # Confusion matrix is displayed
 
 # Use 5-fold split
-kf = KFold(5, shuffle=True)    # A kfold is created which will use a 5-fold split
-fold = 1                      # Counter variable which will start from 1
+# kf = KFold(5, shuffle=True)    # A kfold is created which will use a 5-fold split
+# fold = 1                      # Counter variable which will start from 1
 
 
 # The data is split five ways, for each fold, the 
 # Perceptron is trained, tested and evaluated for accuracy
-for train_index, validate_index in kf.split(X, y):          # A for loop which will go through each train and validate value and in the split of the X and y column 
-    decision_tree.fit(X[train_index],y[train_index])
-    y_test = y[validate_index]    
-    y_pred = decision_tree.predict(X[validate_index])
+# for train_index, validate_index in kf.split(X, y):          # A for loop which will go through each train and validate value and in the split of the X and y column 
+#     decision_tree.fit(X[train_index],y[train_index])
+#     y_test = y[validate_index]    
+#     y_pred = decision_tree.predict(X[validate_index])
+#     print(f"Fold #{fold}, Training Size: {len(X[train_index])}, Validation Size: {len(X[validate_index])}")  # K fold is calculated from 1 to 5 alongside the accuracy of each of those
+#     print('Accuracy: %.2f' % accuracy_score(y_test, y_pred))
+#     fold += 1
 
-    print(f"Fold #{fold}, Training Size: {len(X[train_index])}, Validation Size: {len(X[validate_index])}")  # K fold is calculated from 1 to 5 alongside the accuracy of each of those
-    fold += 1
+# plt.figure()
 
-plt.figure()
+# plt.subplot(321)
+# plt.scatter(df['u'],df['g'], c=y, s=25)
 
-plt.subplot(321)
-plt.scatter(df['u'],df['g'], c=y, s=25)
+# plt.subplot(322)
+# plt.scatter(df['r'],df['i'], c=y, s=25)
 
-plt.subplot(322)
-plt.scatter(df['r'],df['i'], c=y, s=25)
-
-plt.subplot(323)
-plt.scatter(df['u'],df['z'], c=y, s=25)
+# plt.subplot(323)
+# plt.scatter(df['u'],df['z'], c=y, s=25)
 
 
 
 #build a multiclass SVM 'ovo' for one-versus-one, and
 #fit the data
+
+X_train1, X_test1, y_train1, y_test1 = train_test_split(X, y, test_size=0.2, random_state=42)  # X and y is split into training and testing data with test being 20%
+
 multi_svm = SVC(gamma='scale', decision_function_shape='ovo')  # Support Vector Machine is initialised 
-multi_svm.fit(X_train,y_train)  # SVM is applied to X_train and y_train
+multi_svm.fit(X_train1,y_train1)  # SVM is applied to X_train and y_train
 
 
-y_pred1 = multi_svm.predict(X_test)    # y_pred1 calculates the multi_svm prediction on the testing data for X
+y_pred1 = multi_svm.predict(X_test1)    # y_pred1 calculates the multi_svm prediction on the testing data for X
 
 variety = target_names   
 
-cm = confusion_matrix(y_test, y_pred1)  # Confusion matrix is created using the y_test and the calculated y_pred variable from the SVM
+cm = confusion_matrix(y_test1, y_pred1)  # Confusion matrix is created using the y_test and the calculated y_pred variable from the SVM
 
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=variety)
 disp.plot()   
 plt.show()  # Confusion matrix is displayed
 
-accuracy = accuracy_score(y_test, y_pred1)
-print('Accuracy: %.2f' % accuracy_score(y_test, y_pred1))   # Accuracy of the confusion matrix is outputted
+accuracy = accuracy_score(y_test1, y_pred1)
+print('Accuracy: %.2f' % accuracy_score(y_test1, y_pred1))   # Accuracy of the confusion matrix is outputted
+
+# Use 5-fold split
+kf1 = KFold(10, shuffle=True)    # A kfold is created which will use a 5-fold split
+fold1 = 1                      # Counter variable which will start from 1
 
 
+# The data is split five ways, for each fold, the 
+# Perceptron is trained, tested and evaluated for accuracy
+for train_index1, validate_index1 in kf1.split(X, y):          # A for loop which will go through each train and validate value and in the split of the X and y column 
+    decision_tree.fit(X[train_index1],y[train_index1])
+    y_test1 = y[validate_index1]    
+    y_pred1 = decision_tree.predict(X[validate_index1])
+    print(f"Fold #{fold1}, Training Size: {len(X[train_index1])}, Validation Size: {len(X[validate_index1])}")  # K fold is calculated from 1 to 5 alongside the accuracy of each of those
+    print('Accuracy: %.2f' % accuracy_score(y_test1, y_pred1))
+    fold1 += 1
 
 
 
