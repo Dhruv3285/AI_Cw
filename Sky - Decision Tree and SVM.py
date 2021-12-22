@@ -27,7 +27,7 @@ from sklearn.svm import SVC
 path = "."  #absolute or relative path to the folder containing the file. 
             #"." for current folder
 
-filename_read = os.path.join(path, "skyserver.csv")    # Importing a csv file called skyserver which is our dataset
+filename_read = os.path.join(path, "skyserverV2.csv")    # Importing a csv file called skyserver which is our dataset
 df = pd.read_csv(filename_read)  # Reading the csv file and saving it in the df variable
 
 #df = df.reindex(np.random.permutation(df.index))
