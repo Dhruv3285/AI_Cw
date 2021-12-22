@@ -20,7 +20,7 @@ from pylab import rcParams
 import matplotlib.pyplot as plt 
 import matplotlib.pyplot as plt2
 
-dataset = pd.read_csv('skyserver.csv')
+dataset = pd.read_csv('skyserverV2.csv')
 
 # dropping obselete features 
 dataset.drop('objid',1,inplace=True) 
