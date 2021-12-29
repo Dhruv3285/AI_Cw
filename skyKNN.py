@@ -127,20 +127,20 @@ def knnEuclidean(kval, dataset, mt):
 ## range of k value we used for cross validation 
 k_range = range(35, 50)
 # iterate of each k value and gun the classifier
-#for k in k_range:
- #  knn = knnEuclidean(k,dataset,'euclidean')
-  # knn = knnEuclidean(k,dataset,'hamming')
+for k in k_range:
+   knn = knnEuclidean(k,dataset,'euclidean')
+   knn = knnEuclidean(k,dataset,'hamming')
     
 ## defining new dataframe flot a plot
-#df=pd.DataFrame({'x_values': k_range, 'y1_values': k_scores, 'y2_values': m_scores })
- 
+df=pd.DataFrame({'x_values': k_range, 'y1_values': k_scores, 'y2_values': m_scores })
+
 # multiple line plots
-#plt.plot( 'x_values', 'y1_values', data=df, marker='o', markerfacecolor='blue', markersize=12, color='skyblue', linewidth=4, label="euclidean")
-#plt.plot( 'x_values', 'y2_values', data=df, marker='o', markerfacecolor='green', markersize=12, color='lightgreen', linewidth=4,label= "hamming")
+plt.plot( 'x_values', 'y1_values', data=df, marker='o', markerfacecolor='blue', markersize=12, color='skyblue', linewidth=4, label="euclidean")
+plt.plot( 'x_values', 'y2_values', data=df, marker='o', markerfacecolor='green', markersize=12, color='lightgreen', linewidth=4,label= "hamming")
 # show legend
-#plt.legend()
+plt.legend()
 # show graph
-#plt.show()
+plt.show()
 print("done")
 
 
