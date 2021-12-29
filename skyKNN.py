@@ -70,12 +70,12 @@ dataset.drop('rerun',1,inplace=True)
 ## defining features and class 
 c = dataset.iloc[:, 0:15]
 d = dataset.iloc[:, 15]
-## running knn model using 2 diffirent versions of metrics 
+# running knn model using 2 diffirent versions of metrics 
 knnalg(c,d,'euclidean',True)
 knnalg(c,d,'manhattan',True)
 
 # PCA(princple componenet analysis) method
-def plot_correlation(datab):
+def plot_correlation(datab, ind):
     rcParams['figure.figsize']=15,20
     fig = plt.figure() 
     sns.heatmap(datab.corr(), annot=True, fmt= ".2f")
@@ -83,7 +83,7 @@ def plot_correlation(datab):
     
 
 ## running PCA to check feature and class correlations 
-plot_correlation(dataset)
+plot_correlation(dataset,True)
 
 ## dropping unwanted fields after PCA alalysis 
 dataset.drop('specobjid',1,inplace=True) 
@@ -96,10 +96,10 @@ dataset.drop('g',1,inplace=True)
 ## rerunning KNN model with minumal fields using euclidean metric
 v = dataset.iloc[:, 0:9]
 w = dataset.iloc[:, 9]
-knnalg(v,w,'euclidean',False)
+knnalg(v,w,'euclidean',True)
 
 ## running PCA to check see new feature list 
-plot_correlation(dataset)
+plot_correlation(dataset,False)
 
 k_scores = []
 m_scores = []
@@ -127,20 +127,20 @@ def knnEuclidean(kval, dataset, mt):
 ## range of k value we used for cross validation 
 k_range = range(35, 50)
 # iterate of each k value and gun the classifier
-for k in k_range:
-   knn = knnEuclidean(k,dataset,'euclidean')
-   knn = knnEuclidean(k,dataset,'hamming')
+#for k in k_range:
+ #  knn = knnEuclidean(k,dataset,'euclidean')
+  # knn = knnEuclidean(k,dataset,'hamming')
     
 ## defining new dataframe flot a plot
-df=pd.DataFrame({'x_values': k_range, 'y1_values': k_scores, 'y2_values': m_scores })
+#df=pd.DataFrame({'x_values': k_range, 'y1_values': k_scores, 'y2_values': m_scores })
  
 # multiple line plots
-plt.plot( 'x_values', 'y1_values', data=df, marker='o', markerfacecolor='blue', markersize=12, color='skyblue', linewidth=4, label="euclidean")
-plt.plot( 'x_values', 'y2_values', data=df, marker='o', markerfacecolor='green', markersize=12, color='lightgreen', linewidth=4,label= "hamming")
+#plt.plot( 'x_values', 'y1_values', data=df, marker='o', markerfacecolor='blue', markersize=12, color='skyblue', linewidth=4, label="euclidean")
+#plt.plot( 'x_values', 'y2_values', data=df, marker='o', markerfacecolor='green', markersize=12, color='lightgreen', linewidth=4,label= "hamming")
 # show legend
-plt.legend()
+#plt.legend()
 # show graph
-plt.show()
+#plt.show()
 print("done")
 
 
